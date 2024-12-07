@@ -1,0 +1,40 @@
+@model Microsoft.AspNetCore.Http.IRequestCookieCollection
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Management</title>
+</head>
+<body>
+    <h1>Cookie</h1>
+
+    <h2>Создание куки</h2>
+    <form asp-action="CreateCookie" method="post">
+        <input type="text" name="name" placeholder="name cookie" required />
+        <input type="text" name="value" placeholder="value cookie" required />
+        <button type="submit">Create cookie</button>
+    </form>
+
+    <h2>Просмотр</h2>
+    <ul>
+        @foreach (var cookie in Model)
+        {
+                <li>@cookie.Key - @cookie.Value</li>
+        }
+    </ul>
+
+    <h2>Изменение</h2>
+    <form asp-action="EditCookie" method="post">
+        <input type="text" name="name" placeholder="name cookie" required />
+        <input type="text" name="newValue" placeholder="value cookie" required />
+        <button type="submit">Edit cookie</button>
+    </form>
+
+
+    <h2>Удаление</h2>
+    <form asp-action="DeleteCookie" method="post">
+        <input type="text" name="name" placeholder="name cookie" required />
+        <button type="submit">Delete cookie</button>
+    </form>
+</body>
+</html>
